@@ -13,7 +13,7 @@
 #include "genQuery.h"
 
 // local includes
-//#include "../../irods_lustre_api/src/inout_structs.h"
+#include "../../irods_lustre_api/src/libirods-lustre-api"
 #include "inout_structs.h"
 #include "irods_ops.hpp"
 #include "logging.hpp"
@@ -55,7 +55,7 @@ int lustre_irods_connection::send_change_map_to_irods(irodsLustreApiInp_t *inp) 
     init_api_table( api_tbl, pk_tbl );
 
     void *tmp_out = nullptr;
-    int status = procApiRequest( irods_conn, 15001, inp, NULL,
+    int status = procApiRequest( irods_conn, IRODS_LUSTRE_APN, inp, NULL,
                              &tmp_out, NULL );
 
     int returnVal;

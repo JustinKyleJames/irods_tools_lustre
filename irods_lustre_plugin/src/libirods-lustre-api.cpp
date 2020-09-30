@@ -9,6 +9,7 @@
 #include "irods_virtual_path.hpp"
 #include "miscServerFunct.hpp"
 #include "irods_configuration_keywords.hpp"
+#include "client_api_whitelist.hpp"
 
 #if defined(COCKROACHDB_ICAT)
   #include "mid_level_cockroachdb.hpp"
@@ -22,6 +23,7 @@
 #include "boost/filesystem.hpp"
 
 #include "database_routines.hpp"
+#include "libirods-lustre-api.hpp"
 
 // =-=-=-=-=-=-=-
 // stl includes
@@ -159,7 +161,7 @@ int rs_handle_lustre_records( rsComm_t* _comm, irodsLustreApiInp_t* _inp, irodsL
 
         if ( rodsServerHost->localFlag != LOCAL_HOST ) {
             rodsLog(LOG_NOTICE, "Bulk request received by catalog consumer.  Forwarding request to catalog provider.");
-            status = procApiRequest(rodsServerHost->conn, 15001, _inp, nullptr, (void**)_out, nullptr);
+            status = procApiRequest(rodsServerHost->conn, IRODS_LUSTRE_APN, _inp, nullptr, (void**)_out, nullptr);
             return status;
         }
 
@@ -304,9 +306,14 @@ extern "C" {
     // factory function to provide instance of the plugin
     irods::api_entry* plugin_factory( const std::string&,     //_inst_name
                                       const std::string& ) { // _context
+
+#ifdef RODS_SERVER
+        irods::client_api_whitelist::instance().add(IRODS_LUSTRE_APN);
+#endif // RODS_SERVER
+
         // =-=-=-=-=-=-=-
         // create a api def object
-        irods::apidef_t def = { 15001,             // api number
+        irods::apidef_t def = { IRODS_LUSTRE_APN, // api number
                                 RODS_API_VERSION, // api version
                                 NO_USER_AUTH,     // client auth
                                 NO_USER_AUTH,     // proxy auth
