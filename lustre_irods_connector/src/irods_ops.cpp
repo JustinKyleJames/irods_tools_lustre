@@ -13,7 +13,7 @@
 #include "genQuery.h"
 
 // local includes
-#include "../../irods_lustre_api/src/libirods-lustre-api"
+#include "../../irods_lustre_plugin/src/libirods-lustre-api.hpp"
 #include "inout_structs.h"
 #include "irods_ops.hpp"
 #include "logging.hpp"
