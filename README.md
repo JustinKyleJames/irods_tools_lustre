@@ -93,8 +93,8 @@ sudo rpm -i irods-lustre-api-4.2.2-Linux-mysql.rpm
 7.  Build the Lustre-iRODS connector:
 
 ```
-export LD_LIBRARY_PATH=/opt/irods-externals/clang-runtime3.8-0/lib/:/opt/irods-externals/zeromq4-14.1.3-0/lib/
-export PATH=/opt/irods-externals/cmake3.5.2-0/bin:$PATH
+export LD_LIBRARY_PATH=/opt/irods-externals/clang-runtime6.0-0/lib/:/opt/irods-externals/zeromq4-14.1.6-0/lib/
+export PATH=/opt/irods-externals/cmake3.11.4-0/bin:$PATH
 cd irods_tools_lustre/lustre_irods_connector
 mkdir bld
 cd bld
