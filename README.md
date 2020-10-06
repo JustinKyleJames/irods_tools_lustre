@@ -68,8 +68,8 @@ git clone https://github.com/irods-contrib/irods_tools_lustre
 5.  Build the Lustre plugin for irods.   
 
 ```
-export LD_LIBRARY_PATH=/opt/irods-externals/clang-runtime3.8-0/lib/:/opt/irods-externals/zeromq4-14.1.3-0/lib/
-export PATH=/opt/irods-externals/cmake3.5.2-0/bin:$PATH
+export LD_LIBRARY_PATH=/opt/irods-externals/clang-runtime6.0-0/lib/:/opt/irods-externals/zeromq4-14.1.6-0/lib/
+export PATH=/opt/irods-externals/cmake3.11.4-0/bin:$PATH
 cd irods_tools_lustre/irods_lustre_plugin
 mkdir bld
 cd bld
