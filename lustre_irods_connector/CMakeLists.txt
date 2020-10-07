@@ -62,7 +62,8 @@ include_directories(/usr/include/irods
     ${IRODS_EXTERNALS_FULLPATH_BOOST}/include
     ${CMAKE_SOURCE_DIR}/src/
     /opt/irods-externals/cppzmq4.1-0/include
-    /opt/irods-externals/jansson2.7-0/include)
+    /opt/irods-externals/jansson2.7-0/include
+    ${IRODS_EXTERNALS_FULLPATH_JSON}/include)
 
 set(CMAKE_MODULE_LINKER_FLAGS "${CMAKE_MODULE_LINKER_FLAGS} -Wl,-z,defs")
 
